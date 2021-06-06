@@ -1,0 +1,37 @@
+{
+        "request": {
+            "method": "GET",
+            "urlPath": "/api/v3/search", 
+            "queryParameters": {
+                "user_uuid": {
+                    "matches": "[0-9][a-f0-9]{7}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}"            
+                }
+            }
+        },
+        "response": {
+            "status": 200,
+            "delayDistribution": {
+                "type": "lognormal",
+                "median": 100,
+                "sigma": 0.5
+            },
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "transformers": ["response-template"],
+            "jsonBody": {
+                "user" : { 
+                    "id": "{{randomValue length=4 type='NUMERIC'}}",
+                    "uuid": "{{request.query.user_uuid}}", 
+                    "name": { 
+                        "first": "Malcom", 
+                        "last": "Reynolds"
+                    }, 
+                    "company": { 
+                        "uuid": "{{{pickRandom  '7a65ce56-e9a1-4bc5-83f5-5a459a09e85e' 'db60fcd4-c1c0-4fa7-ae8a-0c1fa35b24c6' 'b85748f9-a6bd-4b3b-b961-d27679d395a6' '95aa0bc5-4f79-41af-8434-ee7f6ff14b12' '9fcd2f64-7268-4cf0-b9fb-4f690a79bc73' 'c01d030b-c3c7-4247-b72d-0e921d5da1a2'}}}"
+                    } 
+                }
+            }
+        }
+    }
+

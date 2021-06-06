@@ -23,7 +23,7 @@ not just in terms of writing, but also running the code.
 Thus a loadtest that can be run against solutions shall serve as a benchmarking tool. 
 
 # Goals
-* Setup two User API mocks - using [killgrave](https://github.com/friendsofgo/killgrave)
+* Setup two User API mocks - using Wiremock
 * Setup a Company Database - using sqlite
 * Setup a benchmarking loadtest - using locust
 * Write a baseline 'enterprise default' solution in Java

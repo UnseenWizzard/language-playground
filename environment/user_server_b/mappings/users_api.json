@@ -1,0 +1,28 @@
+{
+        "request": {
+            "method": "GET",
+            "urlPattern": "/users/[a-f][a-f0-9]{7}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}"            
+        },
+        "response": {
+            "status": 200,
+            "delayDistribution": {
+                "type" : "uniform", 
+                "lower": 50,
+                "upper": 90
+            },
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "transformers": ["response-template"],
+            "jsonBody": {
+                "user" : {
+                    "first": "Han", 
+                    "last": "Solo", 
+                    "id": "{{randomValue length=8 type='NUMERIC'}}",
+                    "uuid": "{{request.path.[1]}}", 
+                    "company_id": "{{{pickRandom  '7a65ce56-e9a1-4bc5-83f5-5a459a09e85e' 'db60fcd4-c1c0-4fa7-ae8a-0c1fa35b24c6' 'b85748f9-a6bd-4b3b-b961-d27679d395a6' '95aa0bc5-4f79-41af-8434-ee7f6ff14b12' '9fcd2f64-7268-4cf0-b9fb-4f690a79bc73' 'c01d030b-c3c7-4247-b72d-0e921d5da1a2'}}}"
+                }
+            }
+        }
+    }
+
