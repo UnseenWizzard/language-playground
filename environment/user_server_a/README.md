@@ -1,9 +1,6 @@
 # "User Server A"
 A Wiremock mock API - returning users whose UUID start with an number
 
-## Running
-Starting with `./run.sh` this will listen on port 8081.
-
 ## API Endpoints
 Request: 
 
